@@ -5,19 +5,22 @@ import cv2
 
 # Read image
 img = cv2.imread('lego.png')
-# Smooth it
-img = cv2.medianBlur(img, 3)
 
 img_copy = img.copy()
+# Smooth it
+img_copy = cv2.medianBlur(img_copy, 3)
+
 # Convert to greyscale
 img_gray = cv2.cvtColor(img_copy, cv2.COLOR_BGR2GRAY)
 
+rows = img_gray.shape[0]
+
 # Apply Hough transform to greyscale image
-minDist = 100
-param1 = 500
-param2 = 200  # smaller value-> more false circles
-minRadius = 5
-maxRadius = 10
+minDist = rows / 8
+param1 = 100
+param2 = 30  # smaller value-> more false circles
+minRadius = 1
+maxRadius = 30
 circles = cv2.HoughCircles(
     img_gray, cv2.HOUGH_GRADIENT, 1, minDist,
     param1, param2, minRadius, maxRadius)
