@@ -2,5 +2,6 @@ flake8==6.0.0
 mccabe==0.7.0
 numpy==1.23.5
 opencv-python==4.6.0.66
+pathfinding==1.0.1
 pycodestyle==2.10.0
 pyflakes==3.0.1
